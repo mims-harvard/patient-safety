@@ -1,10 +1,20 @@
 # patient-safety
+<!--
 Resource for *Population-scale patient safety data reveal inequalities in adverse events before and during COVID-19 pandemic* ([preprint](https://www.medrxiv.org/content/10.1101/2021.01.17.21249988v1)) by Xiang Zhang, Marissa Sumathipala, and Marinka Zitnik.
+-->
 
+## Population-scale patient safety data reveal inequalities in adverse events before and during COVID-19 pandemic
+
+
+#### Author: [Xiang Zhang](http://xiangzhang.info/) (xiang_zhang@hms.harvard.edu), [Marissa Sumathipala](https://www.linkedin.com/in/marissa-sumathipala-558bb5179/) (sumathipalam@college.harvard.edu ), [Marinka Zitnik](https://zitniklab.hms.harvard.edu/) (marinka@hms.harvard.edu) 
+
+#### [Project website](https://zitniklab.hms.harvard.edu/projects/patient-safety)
+
+### [Preprint](https://www.medrxiv.org/content/10.1101/2021.01.17.21249988v1)
 
 ## Regenerating results following scripts
 
-- `1\_rawdata\_download.ipynb`: Download raw FAERS data from 2013 Q1 to 2020 Q3 (31 quarters). We provide bash commands to effeciently download quarterly dataset. See XML_NTS.pdf (provided in [Dataset](#dataset)) to have a better understanding of data structure and description. 
+- `1\_rawdata\_download.ipynb`: Download raw FAERS data from 2013 Q1 to 2020 Q3 (31 quarters). We provide bash commands to effeciently download quarterly dataset. See `XML_NTS.pdf` (provided in [Dataset](#dataset)) to have a better understanding of data structure and description. 
 
 - `2\_parsing\_preprocessing.ipynb`: Extract key information from FAERS raw XML data, including administration (version, report\_id, case\_id, country, qualify, serious, serious subtype list, receivedate, receiptdate), demographic (age, gender, weight), adverse events list (each element represents an adverse drug reaction including PT\_code, PT, and outcome), and drug list (each element represents a drug, the key information is drug substance)). Some reports are incomplete, we fill a fixed number for missing values (more details are introduced in script). The files are parsed in quarter and then merged together. We provide the curated and processed data at [Dataset](#dataset).
 
@@ -18,13 +28,6 @@ Resource for *Population-scale patient safety data reveal inequalities in advers
 
 - `7\_results\_analysis.ipynb`: This file mainly show results of our analysis, including the high-level comparison of different populations, enriched adverse events in each population, difference and common SOC of populations, significant drug-adverse event pairs in each population (both overrepresentation and underrepresentation), etc.
 
-### Convert to python scripts
-Our codes (`*.ipynb`) are writen in Jupyter Notebook. It is very easy to convert codes to python scripts. Take `3\_generate\_population\_cohort.ipynb` as an example, run the following command in your terminal,
-
-```
-jupyter nbconvert --to script 3\_generate\_population\_cohort.ipynb
-```
-A `3\_generate\_population\_cohort.py` file will be generated and can be directly run in python IDEs such as PyCharm.
 
 ### Configuration and run our scripts
 
@@ -35,7 +38,7 @@ Our scripts are run in [O2 cluster](https://wiki.rc.hms.harvard.edu/display/O2/)
 git clone https://github.com/mims-harvard/patient-safety.git
 ```
 
-- Please put all the scripts in a same folder (such as `Code`) and create a new folder named `Data` in the upper folder, then create a subfolder in `Data` named `pandemic`, and a subfolder of `pandemic` called `results`. You can do that in terminal following
+- Please put all the scripts in a same folder (such as `Code`);  and create a new folder named `Data` in the parent folder; then create a subfolder in `Data` named `pandemic`, and a subfolder of `pandemic` called `results`. You can do that in terminal following
 
 ```
 cd ..
@@ -57,10 +60,21 @@ virtualenv patientsafety
 source patientsafety/bin/activate
 pip install jupyter
 jupyter notebook
-
 ```
 
 - Enjoy your analysis on patient-safety.
+
+### Convert to python scripts
+Our codes (`*.ipynb`) are writen in Jupyter Notebook. It is very easy to convert codes to python scripts. Take `3\_generate\_population\_cohort.ipynb` as an example, run the following command in your terminal,
+
+```
+jupyter nbconvert --to script 3\_generate\_population\_cohort.ipynb
+```
+The above commend will generate a `3\_generate\_population\_cohort.py` which can be directly run in python IDEs (such as PyCharm) or in terminal.
+
+```
+python 3\_generate\_population\_cohort.py
+```
 
 
 ### Apply our model in flexible scenario
@@ -72,7 +86,7 @@ The users can easily modify **3\_generate\_population\_cohort.ipynb** to generat
 ### FAERS
 We provide all necessary [datasets](https://dataverse.harvard.edu/privateurl.xhtml?token=d796b626-23b9-4a60-86d3-5525fda3c108) for reproducing our work:
 
-- **Name**: Processed FAERS dataset (We depicted the procedure of raw data download, data parse, and preprocessing in 1_.ipynb)
+- **Name**: Processed FAERS dataset (We depicted the procedure of raw data download, data paringe, and preprocessing in `1\_rawdata\_download.ipynb` and `2\_parsing\_preprocessing.ipynb`). The file size is 2.4G. This is a dataframe where each row denotes an independent report. Please find more details about the meaning of each column in `2\_parsing\_preprocessing.ipynb` and `XML_NTS.pdf`. 
 
 ### MedDRA
 
