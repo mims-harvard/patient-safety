@@ -14,18 +14,64 @@ Resource for *Population-scale patient safety data reveal inequalities in advers
 
 - `5\_AE\_trajectories.ipynb`: Implement *AE reporting trajectories* as described in paper. For each adverse event, we calculate its incidence proportion from 2013 to 2019 and use 2-order auto-regressive regression to model its trajectory. We then define pandemic-adverse event association index (PAEAI) to measure whether a medication’s incidence during the pandemic conforms to its trajectory. We only feed adverse events with positive PAEAI to the next step of our approach. In this file, we also map adverse events from *Preferred Terms (PTs)* level to *System Organ Classes (SOCs)* level, based on etiology (such as infections and infestations) and manifestation sites (such as gastrointestinal disorders) following the [MedDRA hierarchy](https://www.meddra.org/how-to-use/basics/hierarchy). 
 
-- `6\_remove\_drug\_interference.ipynb`: 
+- `6\_remove\_drug\_interference.ipynb`: Correspond to the step of *drug interference* in our approach. In this file, we check two aspects of the association among drug, adverse event, and the pandemic. First, the adverse event (such as hallucination) should be significantly associated with the therapy of at least one drug (like Pimavanserin). Second, the formed drug-adverse event pair (like Pimavanserin-hallucination) should be significantly associated with the pandemic. *Note: 1) exchange the order of above two moves will not change the results. 2)this step is kind of computational expensive as containing nest loops.* We use patient matching strategy by comparing adverse drug reactions in test group and control group. The propensity socre is measured based on available information such as age, sex, weight, the qualification of the reporter, severity vector and the submission date. 
 
-- `7\_results\_analysis.ipynb`: 
+- `7\_results\_analysis.ipynb`: This file mainly show results of our analysis, including the high-level comparison of different populations, enriched adverse events in each population, difference and common SOC of populations, significant drug-adverse event pairs in each population (both overrepresentation and underrepresentation), etc.
 
-### Run our model in flexible scenario
+### Convert to python scripts
+Our codes (`*.ipynb`) are writen in Jupyter Notebook. It is very easy to convert codes to python scripts. Take `3\_generate\_population\_cohort.ipynb` as an example, run the following command in your terminal,
+
+```
+jupyter nbconvert --to script 3\_generate\_population\_cohort.ipynb
+```
+A `3\_generate\_population\_cohort.py` file will be generated and can be directly run in python IDEs such as PyCharm.
+
+### Configuration and run our scripts
+
+Our scripts are run in [O2 cluster](https://wiki.rc.hms.harvard.edu/display/O2/) which is a platform for Linux-based high performance computing at Harvard Medical School. 
+
+- Download our scripts to your local server/computer through:
+```
+git clone https://github.com/mims-harvard/patient-safety.git
+```
+
+- Please put all the scripts in a same folder (such as `Code`) and create a new folder named `Data` in the upper folder, then create a subfolder in `Data` named `pandemic`, and a subfolder of `pandemic` called `results`. You can do that in terminal following
+
+```
+cd ..
+mkdir Data
+mkdir Data/pandemic/
+mkdir Data/pandemic/results
+```
+
+- Before run the codes, please make sure you have configured the required environment. All the necessary packages can be installed using the following command
+
+```
+pip install -r requirements.txt
+```
+
+- We recommend the user to run scripts in virtual environment. Build a virtual environment named *patientsafety* and run it in Jupyter Notebook:
+
+```
+virtualenv patientsafety
+source patientsafety/bin/activate
+pip install jupyter
+jupyter notebook
+
+```
+
+- Enjoy your analysis on patient-safety.
+
+
+### Apply our model in flexible scenario
 
 The users can easily modify **3\_generate\_population\_cohort.ipynb** to generate their interested cohorts as a function of reporting time, age, sex, weight, drug, adverse events, etc. For example, our work investigates the period from 03-11 to 09-30 from 2013 to 2020. If anyone want to analyze different time period, just replace the start or end time: such as replace '09-30' by '12-31' to study the period from March 11 to December 31. 
 
 ## Dataset 
 <span id="dataset"> </span>
 ### FAERS
-We provide [dataset](https://dataverse.harvard.edu/privateurl.xhtml?token=d796b626-23b9-4a60-86d3-5525fda3c108) for reproducing our work:
+We provide all necessary [datasets](https://dataverse.harvard.edu/privateurl.xhtml?token=d796b626-23b9-4a60-86d3-5525fda3c108) for reproducing our work:
+
 - **Name**: Processed FAERS dataset (We depicted the procedure of raw data download, data parse, and preprocessing in 1_.ipynb)
 
 ### MedDRA
