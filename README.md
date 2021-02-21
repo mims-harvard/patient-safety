@@ -6,11 +6,13 @@ Resource for *Population-scale patient safety data reveal inequalities in advers
 ## Population-scale patient safety data reveal inequalities in adverse events before and during COVID-19 pandemic
 
 
-#### Author: [Xiang Zhang](http://xiangzhang.info/) (xiang_zhang@hms.harvard.edu), [Marissa Sumathipala](https://www.linkedin.com/in/marissa-sumathipala-558bb5179/) (sumathipalam@college.harvard.edu ), [Marinka Zitnik](https://zitniklab.hms.harvard.edu/) (marinka@hms.harvard.edu) 
+#### Author: [Xiang Zhang](http://xiangzhang.info/), [Marissa Sumathipala](https://www.linkedin.com/in/marissa-sumathipala-558bb5179/), [Marinka Zitnik](https://zitniklab.hms.harvard.edu/) (marinka@hms.harvard.edu) 
 
 #### [Project website](https://zitniklab.hms.harvard.edu/projects/patient-safety)
 
-### [Preprint](https://www.medrxiv.org/content/10.1101/2021.01.17.21249988v1)
+#### [Preprint](https://www.medrxiv.org/content/10.1101/2021.01.17.21249988v1)
+
+
 
 ## Regenerating results following scripts
 
@@ -29,7 +31,7 @@ Resource for *Population-scale patient safety data reveal inequalities in advers
 - `7\_results\_analysis.ipynb`: This file mainly show results of our analysis, including the high-level comparison of different populations, enriched adverse events in each population, difference and common SOC of populations, significant drug-adverse event pairs in each population (both overrepresentation and underrepresentation), etc.
 
 
-### Configuration and run our scripts
+#### Configuration and run our scripts
 
 Our scripts are run in [O2 cluster](https://wiki.rc.hms.harvard.edu/display/O2/) which is a platform for Linux-based high performance computing at Harvard Medical School. 
 
@@ -38,7 +40,7 @@ Our scripts are run in [O2 cluster](https://wiki.rc.hms.harvard.edu/display/O2/)
 git clone https://github.com/mims-harvard/patient-safety.git
 ```
 
-- Please put all the scripts in a same folder (such as `Code`);  and create a new folder named `Data` in the parent folder; then create a subfolder in `Data` named `pandemic`, and a subfolder of `pandemic` called `results`. You can do that in terminal following
+- Please put all the scripts in a same folder (such as `Code`);  and create a new folder named `Data` in the parent folder; then create a subfolder in `Data` named `pandemic`, and a subfolder of `pandemic` called `results`. These folders are used to save results. You can do that in terminal as follow
 
 ```
 cd ..
@@ -64,7 +66,7 @@ jupyter notebook
 
 - Enjoy your analysis on patient-safety.
 
-### Convert to python scripts
+#### Convert to python scripts
 Our codes (`*.ipynb`) are writen in Jupyter Notebook. It is very easy to convert codes to python scripts. Take `3\_generate\_population\_cohort.ipynb` as an example, run the following command in your terminal,
 
 ```
@@ -77,22 +79,31 @@ python 3\_generate\_population\_cohort.py
 ```
 
 
-### Apply our model in flexible scenario
+#### Apply our model in flexible scenario
 
 The users can easily modify **3\_generate\_population\_cohort.ipynb** to generate their interested cohorts as a function of reporting time, age, sex, weight, drug, adverse events, etc. For example, our work investigates the period from 03-11 to 09-30 from 2013 to 2020. If anyone want to analyze different time period, just replace the start or end time: such as replace '09-30' by '12-31' to study the period from March 11 to December 31. 
 
+
+
 ## Dataset 
 <span id="dataset"> </span>
-### FAERS
-We provide all necessary [datasets](https://dataverse.harvard.edu/privateurl.xhtml?token=d796b626-23b9-4a60-86d3-5525fda3c108) for reproducing our work:
 
-- **Name**: Processed FAERS dataset (We depicted the procedure of raw data download, data paringe, and preprocessing in `1\_rawdata\_download.ipynb` and `2\_parsing\_preprocessing.ipynb`). The file size is 2.4G. This is a dataframe where each row denotes an independent report. Please find more details about the meaning of each column in `2\_parsing\_preprocessing.ipynb` and `XML_NTS.pdf`. 
+We provide [all necessary datasets](https://dataverse.harvard.edu/privateurl.xhtml?token=d796b626-23b9-4a60-86d3-5525fda3c108) for reproducing our work:
 
-### MedDRA
+- **reports_v4_pd_new.pk**: Processed FAERS dataset (We depicted the procedure of raw data download, data paringe, and preprocessing in `1\_rawdata\_download.ipynb` and `2\_parsing\_preprocessing.ipynb`). Duplicated reports are already removed. The file size is 2.3G. This is a dataframe where each row denotes an independent report. The rows represents report version,  Please find more details about the meaning of each column in `2\_parsing\_preprocessing.ipynb` and `XML_NTS.pdf`. 
 
-link to meddra, non-commencial
 
-### ATC
+- **XML_NTS.pdf**: Included in raw data that released by FDA. This file describes data structure in XML file in detail. Use of the XML file adheres to the original standards documents for E2b and the M2 implementation specifications.
+
+- **MedDRA\_dic\_all.pk**: This is a dataframe stored in `pickle` format. This file contains all adverse events in MedDRA ontology. Each row denotes one adverse event. The columns denote the name and code of the adverse event in different levels: PT (preferred terms), HLT (high-level term), HLGT (high-level group term), and SOC (system organ class). In partifular, the columns are *PT*, *PT\_name*, *HLT*, *HLT\_name*, *HLGT*, *HLGT\_name*, *SOC*, *SOC\_name*, and *SOC\_abbr* (abbrevation of SOC name).
+
+- **MedDRA\_dic.pk**: Same content with **MedDRA\_dic\_all.pk** but is formed as dictionary instead of dataframe. The *key* of dictionary is a adverse event name in PT level, the corresponding *value* is a list including nine elements: 
+
+**Note: All data about MedDRA ontology are retrived from [MedDRA](https://www.meddra.org/) through [Non-Profit/Non-Commercial License](https://www.meddra.org/subscription/subscription-type) and can only be used in non-profit activities!**
+
+- **drug\_dic\_FAERS.pk**: Disctionary that maps drug substance from text to DrugBank identifier retrivaled from [DrugBank Vocabulary](https://go.drugbank.com/releases/latest#open-data). The *key* of dictionary is text name of drug substance, the corresponding *value* is a list including two elements: DrugBank ID and a number representing the order in which the drug appeared in the FAERS dataset.
+
+
 
 ## Miscellaneous
 
