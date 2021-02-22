@@ -51,8 +51,8 @@ mkdir Data/pandemic/
 mkdir Data/pandemic/results
 ```
 
-<span id="usepk"> </span>
-3. Next we need to prepare the curated dataset and mapping dictionary (for drugs and adverse events). The necessary dataset to reproduce our work are processed patient safety reports (`reports_v4_pd_new.pk`), drug mapping files (`MedDRA_dic_all.pk `), and adverse event mapping (`drug_dic_FAERS.pk `). Download them from [here](https://dataverse.harvard.edu/privateurl.xhtml?token=d796b626-23b9-4a60-86d3-5525fda3c108), and move data to your data folder. Please remember to revise file path accordingly. *Note: we also provide a corresponding .csv version for all the necessary data. Find them in the same link.*
+
+3. Next we need<span id="usepk"> </span>to prepare the curated dataset and mapping dictionary (for drugs and adverse events). The necessary dataset to reproduce our work are processed patient safety reports (`reports_v4_pd_new.pk`), drug mapping files (`MedDRA_dic_all.pk `), and adverse event mapping (`drug_dic_FAERS.pk `). Download them from [here](https://dataverse.harvard.edu/privateurl.xhtml?token=d796b626-23b9-4a60-86d3-5525fda3c108), and move data to your data folder. Please remember to revise file path accordingly. *Note: we also provide a corresponding .csv version for all the necessary data. Find them in the same link.*
 
 4. Before running the codes, please make sure you have configured the required environment. All the necessary packages can be installed using the following command
 
