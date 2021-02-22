@@ -17,7 +17,7 @@ We investigate 10,443,476 adverse event reports (involving 19,193 adverse events
 We use the dataset to detect adverse events that are significantly associated with the pandemic, pinpoint clinically relevant drugs strongly connected with adverse drug events, and identify disparities in the distribution of adverse events across sex and age. To this end, we develop an approach that identifies clinically meaningful adverse events that meet three criteria: i) the reporting frequency of the adverse event changed significantly between 2019 and 2020, ii) the change cannot be explained by its trend in previous years (2013 to 2019), and iii) the adverse drug reaction is strongly associated with at least one drug and cannot be explained by drug interference.
 
 <p align="center">
-<img src="https://github.com/mims-harvard/patient-safety/blob/main/image/workflow.JPG" width="600" align="center">
+<img src="https://github.com/mims-harvard/patient-safety/blob/main/image/workflow.JPG" width="1200" align="center">
 </p>
 
 
