@@ -51,6 +51,7 @@ mkdir Data/pandemic/
 mkdir Data/pandemic/results
 ```
 
+<span id="usepk"> </span>
 3. Next we need to prepare the curated dataset and mapping dictionary (for drugs and adverse events). The necessary dataset to reproduce our work are processed patient safety reports (`reports_v4_pd_new.pk`), drug mapping files (`MedDRA_dic_all.pk `), and adverse event mapping (`drug_dic_FAERS.pk `). Download them from [here](https://dataverse.harvard.edu/privateurl.xhtml?token=d796b626-23b9-4a60-86d3-5525fda3c108), and move data to your data folder. Please remember to revise file path accordingly. *Note: we also provide a corresponding .csv version for all the necessary data. Find them in the same link.*
 
 4. Before running the codes, please make sure you have configured the required environment. All the necessary packages can be installed using the following command
@@ -98,7 +99,7 @@ We provide [all necessary datasets](https://dataverse.harvard.edu/privateurl.xht
 
 
 ### Data for running
-In our scripts, datasets in pickle format are directly used to generate results. However, for preview and broader use, we also supply all required datasets in non-language-specific format ([CSV version](#csv))
+In our scripts, datasets in pickle format are directly used to generate results. However, for preview and broader use, we also supply all required datasets in non-language-specific format ([CSV version](#csv)). See instructions for use these `.pk` files [here](#usepk).
 
 #### Patient safety dataset
 
@@ -133,7 +134,7 @@ We share the intermediate and final results of our analysis.
 #### Final results
 
 
-- **Identified_adverse_events_in_all_patients.csv**: Summary of adverse events identified by our approach in all patients. The defined $`\beta`$ represents the association between adverse events and the pandemic period (p-value is measured by Fisher’s exact test, adjusted by Bonferroni correction). The adverse events are sorted in descending order of PAEAI. The defined PAEAI presents the extent (higher PAEAI suggests larger deviation) that adverse event deviates from its historical trend (Methods). All identified adverse events have positive PAEAI which indicates the reporting pattern during the pandemic doesn’t follow its trajectory. The ‘E’ and ‘P’ in the ‘E\P’ column denotes this adverse event is enriched or purified, respectively. 
+- **Identified_adverse_events_in_all_patients.csv**: Summary of adverse events identified by our approach in all patients. The defined `beta` represents the association between adverse events and the pandemic period (p-value is measured by Fisher’s exact test, adjusted by Bonferroni correction). The adverse events are sorted in descending order of PAEAI. The defined PAEAI presents the extent (higher PAEAI suggests larger deviation) that adverse event deviates from its historical trend (Methods). All identified adverse events have positive PAEAI which indicates the reporting pattern during the pandemic doesn’t follow its trajectory. The ‘E’ and ‘P’ in the ‘E\P’ column denotes this adverse event is enriched or purified, respectively. 
 
 - **Identified_adverse_events_in_male.csv**: Summary of adverse events identified by our approach in male patients.
 
@@ -148,17 +149,17 @@ We share the intermediate and final results of our analysis.
 #### Intermediate results
 We present intermediate results during our analysis. The top 100 results (adverse events or drug-AE pairs) the lowest p-value are already reported in [supplementary](https://www.medrxiv.org/content/10.1101/2021.01.17.21249988v1.full.pdf+html) Tables 7-9. Here show the full table of them.
 
-- **Associations_between_adverse_events_and_the_pandemic.csv**: Evaluate the association between adverse events and the pandemic period. The `Occur 2019` and `Nonoccur 2019` denote the submitted reports that contain and do not contain the specific adverse event in 2019 (March 11 -- September 30), respectively. Similarly, `Occur 2020` and `Nonoccur 2020` denote the statistics in the same period of 2020. The p-value is measured by Fisher's exact test followed by Bonferroni correction. Higher $`\beta`$ and smaller p-value indicate the adverse event has stronger association with the pandemic.
+- **Associations_between_adverse_events_and_the_pandemic.csv**: Evaluate the association between adverse events and the pandemic period. The `Occur 2019` and `Nonoccur 2019` denote the submitted reports that contain and do not contain the specific adverse event in 2019 (March 11 -- September 30), respectively. Similarly, `Occur 2020` and `Nonoccur 2020` denote the statistics in the same period of 2020. The p-value is measured by Fisher's exact test followed by Bonferroni correction. Higher `beta` and smaller p-value indicate the adverse event has stronger association with the pandemic.
 
-- **Associations_between_adverse_events_and_the_pandemic_Top100.csv**: The top 100 adverse events in **Associations_between_adverse_events_and_the_pandemic.csv** with the lowest p-values. Sorted in descending order of $`\beta`$. Correspond to SI Table 7. 
+- **Associations_between_adverse_events_and_the_pandemic_Top100.csv**: The top 100 adverse events in **Associations_between_adverse_events_and_the_pandemic.csv** with the lowest p-values. Sorted in descending order of `beta`. Correspond to SI Table 7. 
 
-- **Associations_between_adverse_events_and_drugs.csv**: Evaluate the association between adverse events and drugs during the pandemic period. Contains the number of patients who: exposed to the drug and have the adverse event (denoted by $`A`$); exposed to the drug but not have the adverse event (denoted by $`B`$); not exposed to the drug but have the adverse event (denoted by $`C`$); not exposed to the drug and not have the adverse event (denoted by $`D`$). All the numbers (A, B, C, and D) are measured during the pandemic period (March 11 -- September 30, 2020). We conduct patient matching and split patients into test group and control group. The size of control group is ten times of that of test group, which means that 10 *(A+B) = C+D (Methods). Higher $`\gamma`$ and smaller p-value indicate the adverse event has stronger association with the drug. 
+- **Associations_between_adverse_events_and_drugs.csv**: Evaluate the association between adverse events and drugs during the pandemic period. Contains the number of patients who: exposed to the drug and have the adverse event (denoted by `A`); exposed to the drug but not have the adverse event (denoted by `B`); not exposed to the drug but have the adverse event (denoted by `C`); not exposed to the drug and not have the adverse event (denoted by `D`). All the numbers (A, B, C, and D) are measured during the pandemic period (March 11 -- September 30, 2020). We conduct patient matching and split patients into test group and control group. The size of control group is ten times of that of test group, which means that 10 *(A+B) = C+D (Methods). Higher `gamma` and smaller p-value indicate the adverse event has stronger association with the drug. 
 
-- **Associations_between_adverse_events_and_drugs_Top100.csv**: The top 100 drug-adverse event pairs of **Associations_between_adverse_events_and_drugs.csv** with the lowest p-values. Sorted in descending order of $`\gamma`$. Correspond to SI Table 8. 
+- **Associations_between_adverse_events_and_drugs_Top100.csv**: The top 100 drug-adverse event pairs of **Associations_between_adverse_events_and_drugs.csv** with the lowest p-values. Sorted in descending order of `gamma`. Correspond to SI Table 8. 
 
-- **Associations_between_drug_adverse_event_pairs_and_the_pandemic.csv**: Evaluate the association between drug-adverse event pairs and the pandemic. The `Occur 2019` and `Nonoccur 2019` denote the number of submitted reports that contain and do not contain the specific drug-adverse event pair in 2019 (March 11 -- September 30), respectively. Similarly, `Occur 2020` and `Nonoccur 2020` denote the statistics in the same period of 2020. The p-value is measured by Fisher's exact test followed by Bonferroni correction. Higher $`\delta`$ and smaller p-value indicate the pair has stronger connection with the pandemic. 
+- **Associations_between_drug_adverse_event_pairs_and_the_pandemic.csv**: Evaluate the association between drug-adverse event pairs and the pandemic. The `Occur 2019` and `Nonoccur 2019` denote the number of submitted reports that contain and do not contain the specific drug-adverse event pair in 2019 (March 11 -- September 30), respectively. Similarly, `Occur 2020` and `Nonoccur 2020` denote the statistics in the same period of 2020. The p-value is measured by Fisher's exact test followed by Bonferroni correction. Higher `delta` and smaller p-value indicate the pair has stronger connection with the pandemic. 
 
-- **Associations_between_drug_adverse_event_pairs_and_the_pandemic_Top100.csv**: The top 100 drug-adverse event pairs of **Associations_between_drug_adverse_event_pairs_and_the_pandemic.csv** with the lowest p-values. Sorted in descending order of $`\delta`$. Correspond to SI Table 9. 
+- **Associations_between_drug_adverse_event_pairs_and_the_pandemic_Top100.csv**: The top 100 drug-adverse event pairs of **Associations_between_drug_adverse_event_pairs_and_the_pandemic.csv** with the lowest p-values. Sorted in descending order of `delta`. Correspond to SI Table 9. 
 
 
 
