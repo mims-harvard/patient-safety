@@ -10,6 +10,15 @@ Resource for *Population-scale patient safety data reveal inequalities in advers
 
 #### [Project website](https://zitniklab.hms.harvard.edu/projects/patient-safety), [Preprint](https://www.medrxiv.org/content/10.1101/2021.01.17.21249988v1)
 
+## Approach overview
+
+We investigate 10,443,476 adverse event reports (involving 19,193 adverse events and 3,624 drugs) from the U.S. Food and Drug Administration (FDA) Adverse Event Reporting System (FAERS) dataset, collected from January 2013 to September 2020. To support safety surveillance of therapeutic products, the FAERS stores anonymized, manually reviewed adverse event reports received by the FDA.
+
+We use the dataset to detect adverse events that are significantly associated with the pandemic, pinpoint clinically relevant drugs strongly connected with adverse drug events, and identify disparities in the distribution of adverse events across sex and age. To this end, we develop an approach that identifies clinically meaningful adverse events that meet three criteria: i) the reporting frequency of the adverse event changed significantly between 2019 and 2020, ii) the change cannot be explained by its trend in previous years (2013 to 2019), and iii) the adverse drug reaction is strongly associated with at least one drug and cannot be explained by drug interference.
+
+<p align="center">
+<img src="https://github.com/mims-harvard/patient-safety/blob/main/image/workflow.JPG" width="600" align="center">
+</p>
 
 
 ## Regenerating results following scripts
@@ -52,7 +61,7 @@ mkdir Data/pandemic/results
 ```
 
 
-3. Next we need<span id="usepk"> </span>to prepare the curated dataset and mapping dictionary (for drugs and adverse events). The necessary dataset to reproduce our work are processed patient safety reports (`reports_v4_pd_new.pk`), drug mapping files (`MedDRA_dic_all.pk `), and adverse event mapping (`drug_dic_FAERS.pk `). Download them from [here](https://dataverse.harvard.edu/privateurl.xhtml?token=d796b626-23b9-4a60-86d3-5525fda3c108), and move data to your data folder. Please remember to revise file path accordingly. *Note: we also provide a corresponding .csv version for all the necessary data. Find them in the same link.*
+3. Next we need<span id="usepk"> </span>to prepare the curated dataset and mapping dictionary (for drugs and adverse events). The necessary dataset to reproduce our work are processed patient safety reports (`patient_safety.pk`), drug mapping files (`AE_mapping.pk `), and adverse event mapping (`drug_mapping.pk `). Download them from [here](https://dataverse.harvard.edu/privateurl.xhtml?token=d796b626-23b9-4a60-86d3-5525fda3c108), and move data to your data folder. Please remember to revise file path accordingly. *Note: we also provide a corresponding .csv version for all the necessary data. Find them in the same link.*
 
 4. Before running the codes, please make sure you have configured the required environment. All the necessary packages can be installed using the following command
 
@@ -88,7 +97,7 @@ python 3_generate_population_cohort.py
 
 ### Apply our model to flexible scenarios
 
-The users can easily modify **3\_generate\_population\_cohort.ipynb** to generate their interested cohorts as a function of reporting time, age, sex, weight, drug, adverse events, etc. For example, our work investigates the period from 03-11 to 09-30 from 2013 to 2020. If anyone wants to analyze a different period, just replace the start or end time: such as replace `09-30` by `12-31` to study the period from March 11 to December 31. 
+The users can easily modify **3\_generate\_population\_cohort.ipynb** to generate their interested cohorts as a function of reporting time, age, sex, weight, drug, adverse events, etc. For example, our work investigates the period from `03-11` to `09-30` from 2013 to 2020. If anyone wants to analyze a different period, just replace the start or end time: such as replace `09-30` by `12-31` to study the period from March 11 to December 31. 
 
 
 
@@ -103,21 +112,23 @@ In our scripts, datasets in pickle format are directly used to generate results.
 
 #### Patient safety dataset
 
-- **reports_v4_pd_new.pk**: Processed FAERS dataset (We depicted the procedure of raw data download, data parsing, and preprocessing in `1_rawdata_download.ipynb` and `2_parsing_preprocessing.ipynb`). Duplicated reports are already removed. This is a DataFrame where each row denotes an independent report. The rows represent the report version, report ID, case ID, country, qualify, severity, severity subtype 1,  severity subtype 2, severity subtype 3, severity subtype 4, severity subtype 5, severity subtype 6, receivedate, receiptdate, age, gender, weight, adverse events list (each element represents an adverse drug reaction including PT\_code, PT name, and outcome), and drug list (each element represents a drug, the key information is drug substance). Please find more details about the meaning of each column in `2_parsing_preprocessing.ipynb` and `XML_NTS.pdf`. 
+- **patient_safety.pk**: Processed FAERS dataset (We depicted the procedure of raw data download, data parsing, and preprocessing in `1_rawdata_download.ipynb` and `2_parsing_preprocessing.ipynb`). Duplicated reports are already removed. This is a DataFrame where each row denotes an independent report. The rows represent the report version, report ID, case ID, country, qualify, severity, severity subtype 1,  severity subtype 2, severity subtype 3, severity subtype 4, severity subtype 5, severity subtype 6, receivedate, receiptdate, age, gender, weight, adverse events list (each element represents an adverse drug reaction including PT\_code, PT name, and outcome), and drug list (each element represents a drug, the key information is drug substance). Please find more details about the meaning of each column in `2_parsing_preprocessing.ipynb` and `XML_NTS.pdf`. 
 
 
 - **XML_NTS.pdf**: Included in raw data released by FDA. This file describes the data structure in the XML files in detail. Use of the XML file adheres to the original standards documents for E2b and the M2 implementation specifications.
 
 #### Drug and adverse event ontology (mapping tables)
 
-- **MedDRA\_dic\_all.pk**: This is a DataFrame stored in `pickle` format. This file contains all adverse events in MedDRA ontology. Each row denotes one adverse event. The columns denote the name and code of the adverse event in different levels: PT (preferred terms), HLT (high-level term), HLGT (high-level group term), and SOC (system organ class). In particular, the columns are *PT*, *PT\_name*, *HLT*, *HLT\_name*, *HLGT*, *HLGT\_name*, *SOC*, *SOC\_name*, and *SOC\_abbr* (abbreviation of SOC name).
+- **AE\_mapping.pk**: This is a DataFrame stored in `pickle` format. This file contains all adverse events in MedDRA ontology. Each row denotes one adverse event. The columns denote the name and code of the adverse event in different levels: PT (preferred terms), HLT (high-level term), HLGT (high-level group term), and SOC (system organ class). In particular, the columns are *PT*, *PT\_name*, *HLT*, *HLT\_name*, *HLGT*, *HLGT\_name*, *SOC*, *SOC\_name*, and *SOC\_abbr* (abbreviation of SOC name).
 
-<!--- **MedDRA\_dic.pk**: Same content with **MedDRA\_dic\_all.pk** but is formed as dictionary instead of DataFrame. The *key* of the dictionary is an adverse event name in PT level, the corresponding *value* is a list including nine elements.-->
+**AE\_dic.pk**: Extracted adverse event name (*PT\_name*) from **AE\_mapping.pk** and form as a dictionary, which enables fast indexing the adverse event. 
 
 
-- **drug\_dic\_FAERS.pk**: Dictionary that maps drug substance from text to DrugBank identifier retrieved from [DrugBank Vocabulary](https://go.drugbank.com/releases/latest#open-data). The *key* of the dictionary is textural name of drug substance, the corresponding *value* is a list including two elements: DrugBank ID and a number representing the order in which the drug appeared in the FAERS dataset.
+- **drug\_mapping.pk**: Dictionary that maps drug substance from text to DrugBank identifier retrieved from [DrugBank Vocabulary](https://go.drugbank.com/releases/latest#open-data). The *key* of the dictionary is textural name of drug substance, the corresponding *value* is a list including two elements: DrugBank ID and a number representing the order in which the drug appeared in the FAERS dataset.
 
-- **ATC_ontology_DBID_stringname_FAERSCode.csv**: Anatomical Therapeutic Chemical ([ATC](https://www.whocc.no/atc_ddd_index/)) ontology. The ATC categorization is an internationally accepted classification system maintained by the WHO that classifies active ingredients of drugs according to the organ or system on which they act and their therapeutic, pharmacological, and chemical properties. This file contains the broad class of ATC codes, each subclass level in a separate column, the DrugBank ID, FAERS code ID, and string name. 
+- **drug\_dic.pk**: Extracted drug names from **drug\_mapping.pk** and form as a dictionary, which enables fast indexing the drug. 
+
+- **drug\_ATC\_mapping.csv**: Anatomical Therapeutic Chemical ([ATC](https://www.whocc.no/atc_ddd_index/)) ontology. The ATC categorization is an internationally accepted classification system maintained by the WHO that classifies active ingredients of drugs according to the organ or system on which they act and their therapeutic, pharmacological, and chemical properties. This file contains the broad class of ATC codes, each subclass level in a separate column, the DrugBank ID, FAERS code ID, and string name. 
 
 
 **Note: All data about MedDRA ontology are retrieved from [MedDRA](https://www.meddra.org/) through [Non-Profit/Non-Commercial License](https://www.meddra.org/subscription/subscription-type) and can only be used in non-profit activities!**
@@ -125,7 +136,7 @@ In our scripts, datasets in pickle format are directly used to generate results.
 ### Data in CSV format
 <span id="csv"> </span>
 
-- **MedDRA\_dic\_all.csv**, **MedDRA\_dic.csv**, and **drug\_dic\_FAERS.csv** are the same files in CSV format of **MedDRA\_dic\_all.pk**, **MedDRA\_dic.pk**, and **drug\_dic\_FAERS.pk**. These files are not used in our scripts.
+- **patient_safety.csv**, **AE\_mapping.csv**, **AE\_dic.csv**, **drug\_mapping.csv**, and **drug\_dic.csv** are the same files in CSV format of **patient_safety.pk**, **AE\_mapping.pk**, **AE\_dic.pk**, **drug\_mapping.pk**, and **drug\_dic.pk**. These CSV files are not used in our scripts but offer opportunities for researchers to study population-scale patient safety in various platforms and programming languages.
 
 ### Analysis results
 
