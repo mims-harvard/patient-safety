@@ -112,7 +112,7 @@ In our scripts, datasets in pickle format are directly used to generate results.
 
 - **MedDRA\_dic\_all.pk**: This is a DataFrame stored in `pickle` format. This file contains all adverse events in MedDRA ontology. Each row denotes one adverse event. The columns denote the name and code of the adverse event in different levels: PT (preferred terms), HLT (high-level term), HLGT (high-level group term), and SOC (system organ class). In particular, the columns are *PT*, *PT\_name*, *HLT*, *HLT\_name*, *HLGT*, *HLGT\_name*, *SOC*, *SOC\_name*, and *SOC\_abbr* (abbreviation of SOC name).
 
-- **MedDRA\_dic.pk**: Same content with **MedDRA\_dic\_all.pk** but is formed as dictionary instead of DataFrame. The *key* of the dictionary is an adverse event name in PT level, the corresponding *value* is a list including nine elements: 
+<!--- **MedDRA\_dic.pk**: Same content with **MedDRA\_dic\_all.pk** but is formed as dictionary instead of DataFrame. The *key* of the dictionary is an adverse event name in PT level, the corresponding *value* is a list including nine elements.-->
 
 
 - **drug\_dic\_FAERS.pk**: Dictionary that maps drug substance from text to DrugBank identifier retrieved from [DrugBank Vocabulary](https://go.drugbank.com/releases/latest#open-data). The *key* of the dictionary is textural name of drug substance, the corresponding *value* is a list including two elements: DrugBank ID and a number representing the order in which the drug appeared in the FAERS dataset.
