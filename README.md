@@ -42,7 +42,7 @@ mkdir Code
 cp *.ipynb Code/
 ```
 
-2. Create a new folder named `Data` in the same level with `Code`. Then create a subfolder in `Data` named `pandemic`, and a subfolder of `pandemic` called `results`. These folders are used to save results. You can do that in a terminal as following
+2. Create a new folder named `Data` at the same level as `Code`. Then create a subfolder in `Data` named `pandemic`, and a subfolder of `pandemic` called `results`. These folders are used to save results. You can do that in a terminal as following
 
 ```
 cd ..
@@ -51,7 +51,7 @@ mkdir Data/pandemic/
 mkdir Data/pandemic/results
 ```
 
-3. Next we need to prepare the curated dataset and mapping dictionary (for drugs and adverse events). The necessary dataset to reproduce our work are processed patient safety reports (`reports_v4_pd_new.pk`), drug mapping files (`MedDRA_dic_all.pk `), and adverse event mapping (`drug_dic_FAERS.pk `). Download them from [here](https://dataverse.harvard.edu/privateurl.xhtml?token=d796b626-23b9-4a60-86d3-5525fda3c108), and move data to your data folder. Please remember to revise file path accordingly. *Note: we also provide corresponding .csv version for all necessary data. Find them in the same link.*
+3. Next we need to prepare the curated dataset and mapping dictionary (for drugs and adverse events). The necessary dataset to reproduce our work are processed patient safety reports (`reports_v4_pd_new.pk`), drug mapping files (`MedDRA_dic_all.pk `), and adverse event mapping (`drug_dic_FAERS.pk `). Download them from [here](https://dataverse.harvard.edu/privateurl.xhtml?token=d796b626-23b9-4a60-86d3-5525fda3c108), and move data to your data folder. Please remember to revise file path accordingly. *Note: we also provide a corresponding .csv version for all the necessary data. Find them in the same link.*
 
 4. Before running the codes, please make sure you have configured the required environment. All the necessary packages can be installed using the following command
 
@@ -98,7 +98,7 @@ We provide [all necessary datasets](https://dataverse.harvard.edu/privateurl.xht
 
 
 ### Data for running
-In our scripts, datasets in pickle format are directly used. However, for preview and broader use, we also supply all required datasets in non-language-specific format ([CSV version](#csv))
+In our scripts, datasets in pickle format are directly used to generate results. However, for preview and broader use, we also supply all required datasets in non-language-specific format ([CSV version](#csv))
 
 #### Patient safety dataset
 
@@ -107,7 +107,7 @@ In our scripts, datasets in pickle format are directly used. However, for previe
 
 - **XML_NTS.pdf**: Included in raw data released by FDA. This file describes the data structure in the XML files in detail. Use of the XML file adheres to the original standards documents for E2b and the M2 implementation specifications.
 
-#### Drug and advers event ontology (mapping tables)
+#### Drug and adverse event ontology (mapping tables)
 
 - **MedDRA\_dic\_all.pk**: This is a DataFrame stored in `pickle` format. This file contains all adverse events in MedDRA ontology. Each row denotes one adverse event. The columns denote the name and code of the adverse event in different levels: PT (preferred terms), HLT (high-level term), HLGT (high-level group term), and SOC (system organ class). In particular, the columns are *PT*, *PT\_name*, *HLT*, *HLT\_name*, *HLGT*, *HLGT\_name*, *SOC*, *SOC\_name*, and *SOC\_abbr* (abbreviation of SOC name).
 
@@ -116,7 +116,7 @@ In our scripts, datasets in pickle format are directly used. However, for previe
 
 - **drug\_dic\_FAERS.pk**: Dictionary that maps drug substance from text to DrugBank identifier retrieved from [DrugBank Vocabulary](https://go.drugbank.com/releases/latest#open-data). The *key* of the dictionary is textural name of drug substance, the corresponding *value* is a list including two elements: DrugBank ID and a number representing the order in which the drug appeared in the FAERS dataset.
 
-- **ATC_ontology_DBID_stringname_FAERSCode.csv**: Anatomical Therapeutic Chemical ([ATC](https://www.whocc.no/atc_ddd_index/)) ontology. The ATC categorization is an internationally accepted classification system maintained by the WHO that classifies active ingredients of drugs according to the organ or system on which they act and their therapeutic, pharmacological and chemical properties. This file contains the broad class of ATC codes, each subclass level in a separate column, the DrugBank ID, FAERS code ID, and string name. 
+- **ATC_ontology_DBID_stringname_FAERSCode.csv**: Anatomical Therapeutic Chemical ([ATC](https://www.whocc.no/atc_ddd_index/)) ontology. The ATC categorization is an internationally accepted classification system maintained by the WHO that classifies active ingredients of drugs according to the organ or system on which they act and their therapeutic, pharmacological, and chemical properties. This file contains the broad class of ATC codes, each subclass level in a separate column, the DrugBank ID, FAERS code ID, and string name. 
 
 
 **Note: All data about MedDRA ontology are retrieved from [MedDRA](https://www.meddra.org/) through [Non-Profit/Non-Commercial License](https://www.meddra.org/subscription/subscription-type) and can only be used in non-profit activities!**
@@ -130,29 +130,35 @@ In our scripts, datasets in pickle format are directly used. However, for previe
 
 We share the intermediate and final results of our analysis. 
 
-- **Identified_adverse_events_in_all_patients.csv**: Summary of adverse events identified by our approach in all patients. The defined $\beta$ represents the association between adverse event and the pandemic period (p-value is measured by Fisher’s exact test, adjusted by Bonferroni correction). The adverse events are sorted in descending order of PAEAI (). The defined PAEAI presents the extent (higher PAEAI suggests larger deviation) that adverse event deviates from its historical trend (Methods). All identified adverse events have positive PAEAI which indicates the reporting pattern during the pandemic doesn’t follow it’s trajectory. The ‘E’ and ‘P’ in the ‘E\P’ column denotes this adverse event is enriched or purified, respectively. 
+#### Final results
+
+
+- **Identified_adverse_events_in_all_patients.csv**: Summary of adverse events identified by our approach in all patients. The defined $`\beta`$ represents the association between adverse events and the pandemic period (p-value is measured by Fisher’s exact test, adjusted by Bonferroni correction). The adverse events are sorted in descending order of PAEAI. The defined PAEAI presents the extent (higher PAEAI suggests larger deviation) that adverse event deviates from its historical trend (Methods). All identified adverse events have positive PAEAI which indicates the reporting pattern during the pandemic doesn’t follow its trajectory. The ‘E’ and ‘P’ in the ‘E\P’ column denotes this adverse event is enriched or purified, respectively. 
 
 - **Identified_adverse_events_in_male.csv**: Summary of adverse events identified by our approach in male patients.
 
-- **Identified_adverse_events_in_female.csv**:
+- **Identified_adverse_events_in_female.csv**: Summary of adverse events identified by our approach in female patients.
 
-- **Identified_adverse_events_in_young.csv**:
+- **Identified_adverse_events_in_young.csv**: Summary of adverse events identified by our approach in young patients.
 
-- **Identified_adverse_events_in_adults.csv**:
+- **Identified_adverse_events_in_adults.csv**: Summary of adverse events identified by our approach in adult patients.
 
-- **Identified_adverse_events_in_elderly.csv**:
+- **Identified_adverse_events_in_elderly.csv**: Summary of adverse events identified by our approach in elderly patients.
 
-- **Associations_between_adverse_events_and_the_pandemic.csv**: 
+#### Intermediate results
+We present intermediate results during our analysis. The top 100 results (adverse events or drug-AE pairs) the lowest p-value are already reported in [supplementary](https://www.medrxiv.org/content/10.1101/2021.01.17.21249988v1.full.pdf+html) Tables 7-9. Here show the full table of them.
 
-- **Associations_between_adverse_events_and_the_pandemic_Top100.csv**: 
+- **Associations_between_adverse_events_and_the_pandemic.csv**: Evaluate the association between adverse events and the pandemic period. The `Occur 2019` and `Nonoccur 2019` denote the submitted reports that contain and do not contain the specific adverse event in 2019 (March 11 -- September 30), respectively. Similarly, `Occur 2020` and `Nonoccur 2020` denote the statistics in the same period of 2020. The p-value is measured by Fisher's exact test followed by Bonferroni correction. Higher $`\beta`$ and smaller p-value indicate the adverse event has stronger association with the pandemic.
 
-- **Associations_between_adverse_events_and_drugs.csv**: 
+- **Associations_between_adverse_events_and_the_pandemic_Top100.csv**: The top 100 adverse events in **Associations_between_adverse_events_and_the_pandemic.csv** with the lowest p-values. Sorted in descending order of $`\beta`$. Correspond to SI Table 7. 
 
-- **Associations_between_adverse_events_and_drugs_Top100.csv**: 
+- **Associations_between_adverse_events_and_drugs.csv**: Evaluate the association between adverse events and drugs during the pandemic period. Contains the number of patients who: exposed to the drug and have the adverse event (denoted by $`A`$); exposed to the drug but not have the adverse event (denoted by $`B`$); not exposed to the drug but have the adverse event (denoted by $`C`$); not exposed to the drug and not have the adverse event (denoted by $`D`$). All the numbers (A, B, C, and D) are measured during the pandemic period (March 11 -- September 30, 2020). We conduct patient matching and split patients into test group and control group. The size of control group is ten times of that of test group, which means that 10 *(A+B) = C+D (Methods). Higher $`\gamma`$ and smaller p-value indicate the adverse event has stronger association with the drug. 
 
-- **Associations_between_drug_adverse_event_pairs_and_the_pandemic.csv**: 
+- **Associations_between_adverse_events_and_drugs_Top100.csv**: The top 100 drug-adverse event pairs of **Associations_between_adverse_events_and_drugs.csv** with the lowest p-values. Sorted in descending order of $`\gamma`$. Correspond to SI Table 8. 
 
-- **Associations_between_drug_adverse_event_pairs_and_the_pandemic_Top100.csv**: 
+- **Associations_between_drug_adverse_event_pairs_and_the_pandemic.csv**: Evaluate the association between drug-adverse event pairs and the pandemic. The `Occur 2019` and `Nonoccur 2019` denote the number of submitted reports that contain and do not contain the specific drug-adverse event pair in 2019 (March 11 -- September 30), respectively. Similarly, `Occur 2020` and `Nonoccur 2020` denote the statistics in the same period of 2020. The p-value is measured by Fisher's exact test followed by Bonferroni correction. Higher $`\delta`$ and smaller p-value indicate the pair has stronger connection with the pandemic. 
+
+- **Associations_between_drug_adverse_event_pairs_and_the_pandemic_Top100.csv**: The top 100 drug-adverse event pairs of **Associations_between_drug_adverse_event_pairs_and_the_pandemic.csv** with the lowest p-values. Sorted in descending order of $`\delta`$. Correspond to SI Table 9. 
 
 
 
