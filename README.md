@@ -71,7 +71,7 @@ mkdir Data/parsed
 ```
 
 
-4. Next we need<span id="usepk"> </span>to prepare the curated dataset and mapping dictionary (for drugs and adverse events). The necessary dataset to reproduce our work are processed patient safety reports (`patient_safety.pk`), drug mapping files (`AE_mapping.pk `), and adverse event mapping (`drug_mapping.pk `). Download them from [here](https://doi.org/10.7910/DVN/G9SHDA) or [here](#downloadlinks), and move data to folder `Data/curated/`. If your data path is different, please remember to revise file path accordingly. *Note: we also provide a corresponding .csv version for all the necessary data. Find them in the same link.*
+4. Next we need<span id="usepk"> </span>to prepare the curated dataset and mapping dictionary (for drugs and adverse events). The necessary dataset to reproduce our work are processed patient safety reports (`patient_safety.pk`), drug mapping files (`AE_mapping.pk `, `AE_dic.pk`), and adverse event mapping (`drug_mapping.pk `). Download them from [here](https://doi.org/10.7910/DVN/G9SHDA) or [here](#downloadlinks), and move data to folder `Data/curated/`. If your data path is different, please remember to revise file path accordingly. *Note: we also provide a corresponding .csv version for all the necessary data. Find them in the same link.*
 
 5. Before running the codes, please make sure you have configured the required environment. All the necessary packages can be installed using the following command
 
