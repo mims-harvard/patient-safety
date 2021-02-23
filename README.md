@@ -179,6 +179,9 @@ We present intermediate results during our analysis. The top 100 results (advers
 ## Dataset download 
 <span id="downloadlinks"> </span> 
 
+All files in dataset can be downloaded [here](https://dataverse.harvard.edu/privateurl.xhtml?token=d796b626-23b9-4a60-86d3-5525fda3c108). Download portals for separate files:
+
+### Data in pickle format
 - [patient_safety.pk](https://dataverse.harvard.edu/api/access/datafile/4416415)
 
 - [XML_NTS.pdf](https://dataverse.harvard.edu/api/access/datafile/4415941)
@@ -189,15 +192,22 @@ We present intermediate results during our analysis. The top 100 results (advers
 
 - [drug_mapping.pk](https://dataverse.harvard.edu/api/access/datafile/4416417)
 
-
 - [drug_ATC_mapping.csv](https://dataverse.harvard.edu/api/access/datafile/4416430)
 
-- [patient_safety.csv]( https://dataverse.harvard.edu/api/access/datafile/4416428)
+
+### Data in CSV format
+- [patient_safety.csv](https://dataverse.harvard.edu/api/access/datafile/4416428)
+
+- [XML_NTS.pdf](https://dataverse.harvard.edu/api/access/datafile/4415941)
 
 - [AE_mapping.csv](https://dataverse.harvard.edu/api/access/datafile/4416429)
 
 - [drug_mapping.csv](https://dataverse.harvard.edu/api/access/datafile/4416431)
 
+- [drug_ATC_mapping.csv](https://dataverse.harvard.edu/api/access/datafile/4416430)
+
+
+### Results
 - [Identified_adverse_events_in_all_patients.csv](https://dataverse.harvard.edu/api/access/datafile/4416446)
 
 - [Identified_adverse_events_in_male.csv](https://dataverse.harvard.edu/api/access/datafile/4416447)
