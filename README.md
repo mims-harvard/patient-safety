@@ -44,42 +44,47 @@ We use the dataset to detect adverse events that are significantly associated wi
 
 Our scripts are run in [O2 cluster](https://wiki.rc.hms.harvard.edu/display/O2/) which is a platform for Linux-based high-performance computing at Harvard Medical School. 
 
-1. Download our scripts to your local server/computer. Then creat a folder (such as `Code`) and copy all scripts in:
-```
-git clone https://github.com/mims-harvard/patient-safety.git
-cd patient-safety
-mkdir Code
-cp *.ipynb Code/
-```
-
-2. Create a new folder named `Data` at the same level as `Code`. Then create a subfolder in `Data` named `pandemic`, and a subfolder of `pandemic` called `results`. These folders are used to save results. You can do that in a terminal as following
-
-```
-cd ..
-mkdir Data
-mkdir Data/pandemic/
-mkdir Data/pandemic/results
-```
-
-
-3. Next we need<span id="usepk"> </span>to prepare the curated dataset and mapping dictionary (for drugs and adverse events). The necessary dataset to reproduce our work are processed patient safety reports (`patient_safety.pk`), drug mapping files (`AE_mapping.pk `), and adverse event mapping (`drug_mapping.pk `). Download them from [here](https://dataverse.harvard.edu/privateurl.xhtml?token=d796b626-23b9-4a60-86d3-5525fda3c108), and move data to your data folder. Please remember to revise file path accordingly. *Note: we also provide a corresponding .csv version for all the necessary data. Find them in the same link.*
-
-4. Before running the codes, please make sure you have configured the required environment. All the necessary packages can be installed using the following command
-
-```
-pip install -r requirements.txt
-```
-
-5. We recommend the user run scripts in a virtual environment. Build a virtual environment named *patientsafety* and run it in Jupyter Notebook:
+1. We recommend the user run scripts in a virtual environment. Build a virtual environment named *patientsafety* and install Jupyter Notebook if you don't have it:
 
 ```
 virtualenv patientsafety
 source patientsafety/bin/activate
 pip install jupyter
-jupyter notebook
 ```
 
-6. Enjoy your analysis.
+2. Download our scripts to your local server/computer. Then creat a folder (such as `Code`) and copy all scripts in:
+```
+git clone https://github.com/mims-harvard/patient-safety.git
+cd patient-safety
+mkdir Code
+mv *.ipynb Code/
+```
+
+3. Create a new folder named `Data` at the same level as `Code`. Then create subfolders: `curated` for all necessary data to run our scripts including patient safety dataset and supporting files (such as drug and adverse event ontology); `pandemic` to save intermediate results; a subfolder of `pandemic` called `results` to save final analyze results; `parsed` for datasets parsed from raw data through `2_parsing_preprocessing.ipynb`. You can do that in a terminal as following
+
+```
+mkdir Data
+mkdir Data/curated
+mkdir Data/pandemic/
+mkdir Data/pandemic/results
+mkdir Data/parsed
+```
+
+
+4. Next we need<span id="usepk"> </span>to prepare the curated dataset and mapping dictionary (for drugs and adverse events). The necessary dataset to reproduce our work are processed patient safety reports (`patient_safety.pk`), drug mapping files (`AE_mapping.pk `), and adverse event mapping (`drug_mapping.pk `). Download them from [here](https://dataverse.harvard.edu/privateurl.xhtml?token=d796b626-23b9-4a60-86d3-5525fda3c108) or [here](#downloadlinks), and move data to folder `Data/curated/`. If your data path is different, please remember to revise file path accordingly. *Note: we also provide a corresponding .csv version for all the necessary data. Find them in the same link.*
+
+5. Before running the codes, please make sure you have configured the required environment. All the necessary packages can be installed using the following command
+
+```
+pip install -r requirements.txt
+```
+
+
+6. Open Jupyter Notebook and enjoy your analysis:
+```
+cd Code
+jupyter notebook
+```
 
 
 
