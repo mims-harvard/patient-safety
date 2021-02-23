@@ -102,14 +102,14 @@ The users can easily modify **3\_generate\_population\_cohort.ipynb** to generat
 
 
 
-## Dataset 
+## Dataset description
 <span id="dataset"> </span>
 
-We provide [all necessary datasets](https://dataverse.harvard.edu/privateurl.xhtml?token=d796b626-23b9-4a60-86d3-5525fda3c108) for reproducing our work.
+We provide [all necessary dataset](https://dataverse.harvard.edu/privateurl.xhtml?token=d796b626-23b9-4a60-86d3-5525fda3c108) for reproducing our work, or direct download dataset [here](#downloadlink).
 
 
 ### Data for running
-In our scripts, datasets in pickle format are directly used to generate results. However, for preview and broader use, we also supply all required datasets in non-language-specific format ([CSV version](#csv)). See instructions for use these `.pk` files [here](#usepk).
+In our scripts, data in pickle format are directly used to generate results. However, for preview and broader use, we also supply all required dataset in non-language-specific format ([CSV version](#csv)). See instructions for use these `.pk` files [here](#usepk).
 
 #### Patient safety dataset
 
@@ -122,7 +122,7 @@ In our scripts, datasets in pickle format are directly used to generate results.
 
 - **AE\_mapping.pk**: This is a DataFrame stored in `pickle` format. This file contains all adverse events in MedDRA ontology. Each row denotes one adverse event. The columns denote the name and code of the adverse event in different levels: PT (preferred terms), HLT (high-level term), HLGT (high-level group term), and SOC (system organ class). In particular, the columns are *PT*, *PT\_name*, *HLT*, *HLT\_name*, *HLGT*, *HLGT\_name*, *SOC*, *SOC\_name*, and *SOC\_abbr* (abbreviation of SOC name).
 
-**AE\_dic.pk**: Extracted adverse event name (*PT\_name*) from **AE\_mapping.pk** and form as a dictionary, which enables fast indexing the adverse event. 
+- **AE\_dic.pk**: Extracted adverse event name (*PT\_name*) from **AE\_mapping.pk** and form as a dictionary, which enables fast indexing the adverse event. 
 
 
 - **drug\_mapping.pk**: Dictionary that maps drug substance from text to DrugBank identifier retrieved from [DrugBank Vocabulary](https://go.drugbank.com/releases/latest#open-data). The *key* of the dictionary is textural name of drug substance, the corresponding *value* is a list including two elements: DrugBank ID and a number representing the order in which the drug appeared in the FAERS dataset.
@@ -137,7 +137,9 @@ In our scripts, datasets in pickle format are directly used to generate results.
 ### Data in CSV format
 <span id="csv"> </span>
 
-- **patient_safety.csv**, **AE\_mapping.csv**, **AE\_dic.csv**, **drug\_mapping.csv**, and **drug\_dic.csv** are the same files in CSV format of **patient_safety.pk**, **AE\_mapping.pk**, **AE\_dic.pk**, **drug\_mapping.pk**, and **drug\_dic.pk**. These CSV files are not used in our scripts but offer opportunities for researchers to study population-scale patient safety in various platforms and programming languages.
+- **patient_safety.csv**, **AE\_mapping.csv**, and ***drug\_mapping.csv** are the same files in CSV format of **patient_safety.pk**, **AE\_mapping.pk**, and **drug\_mapping.pk**. These CSV files are not used in our scripts but offer opportunities for researchers to study population-scale patient safety in various platforms and programming languages.
+
+<!-- *AE\_dic.csv**,  **drug\_dic.csv**-->
 
 ### Analysis results
 
@@ -173,6 +175,53 @@ We present intermediate results during our analysis. The top 100 results (advers
 - **Associations_between_drug_adverse_event_pairs_and_the_pandemic.csv**: Evaluate the association between drug-adverse event pairs and the pandemic. The `Occur 2019` and `Nonoccur 2019` denote the number of submitted reports that contain and do not contain the specific drug-adverse event pair in 2019 (March 11 -- September 30), respectively. Similarly, `Occur 2020` and `Nonoccur 2020` denote the statistics in the same period of 2020. The p-value is measured by Fisher's exact test followed by Bonferroni correction. Higher `delta` and smaller p-value indicate the pair has stronger connection with the pandemic. 
 
 - **Associations_between_drug_adverse_event_pairs_and_the_pandemic_Top100.csv**: The top 100 drug-adverse event pairs of **Associations_between_drug_adverse_event_pairs_and_the_pandemic.csv** with the lowest p-values. Sorted in descending order of `delta`. Correspond to SI Table 9. 
+
+## Dataset download 
+<span id="downloadlinks"> </span> 
+
+- [patient_safety.pk](https://dataverse.harvard.edu/api/access/datafile/4416415)
+
+- [XML_NTS.pdf](https://dataverse.harvard.edu/api/access/datafile/4415941)
+
+- [AE_mapping.pk](https://dataverse.harvard.edu/api/access/datafile/4416414)
+
+- [AE_dic.pk](https://dataverse.harvard.edu/api/access/datafile/4416416)
+
+- [drug_mapping.pk](https://dataverse.harvard.edu/api/access/datafile/4416417)
+
+- [drug_dic.pk]
+
+- [drug_ATC_mapping.csv](https://dataverse.harvard.edu/api/access/datafile/4416430)
+
+- [patient_safety.csv]( https://dataverse.harvard.edu/api/access/datafile/4416428)
+
+- [AE_mapping.csv](https://dataverse.harvard.edu/api/access/datafile/4416429)
+
+- [drug_mapping.csv](https://dataverse.harvard.edu/api/access/datafile/4416431)
+
+- [Identified_adverse_events_in_all_patients.csv](https://dataverse.harvard.edu/api/access/datafile/4416446)
+
+- [Identified_adverse_events_in_male.csv](https://dataverse.harvard.edu/api/access/datafile/4416447)
+
+- [Identified_adverse_events_in_female.csv](https://dataverse.harvard.edu/api/access/datafile/4416443)
+
+- [Identified_adverse_events_in_young.csv](https://dataverse.harvard.edu/api/access/datafile/4416444)
+
+- [Identified_adverse_events_in_adults.csv](https://dataverse.harvard.edu/api/access/datafile/4416448)
+
+- [Identified_adverse_events_in_elderly.csv](https://dataverse.harvard.edu/api/access/datafile/4416445)
+
+- [Associations_between_adverse_events_and_the_pandemic.csv](https://dataverse.harvard.edu/api/access/datafile/4416450)
+
+- [Associations_between_adverse_events_and_the_pandemic_Top100.csv](https://dataverse.harvard.edu/api/access/datafile/4416451)
+
+- [Associations_between_adverse_events_and_drugs.csv](https://dataverse.harvard.edu/api/access/datafile/4416454)
+
+- [Associations_between_adverse_events_and_drugs_Top100.csv](https://dataverse.harvard.edu/api/access/datafile/4416452)
+
+- [Associations_between_drug_adverse_event_pairs_and_the_pandemic.csv](https://dataverse.harvard.edu/api/access/datafile/4416455)
+
+- [Associations_between_drug_adverse_event_pairs_and_the_pandemic_Top100.csv](https://dataverse.harvard.edu/api/access/datafile/4416449)
 
 
 ## Miscellaneous
