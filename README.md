@@ -71,7 +71,7 @@ mkdir Data/parsed
 ```
 
 
-4. Next we need<span id="usepk"> </span>to prepare the curated dataset and mapping dictionary (for drugs and adverse events). The necessary dataset to reproduce our work are processed patient safety reports (`patient_safety.pk`), drug mapping files (`AE_mapping.pk `), and adverse event mapping (`drug_mapping.pk `). Download them from [here](https://dataverse.harvard.edu/privateurl.xhtml?token=d796b626-23b9-4a60-86d3-5525fda3c108) or [here](#downloadlinks), and move data to folder `Data/curated/`. If your data path is different, please remember to revise file path accordingly. *Note: we also provide a corresponding .csv version for all the necessary data. Find them in the same link.*
+4. Next we need<span id="usepk"> </span>to prepare the curated dataset and mapping dictionary (for drugs and adverse events). The necessary dataset to reproduce our work are processed patient safety reports (`patient_safety.pk`), drug mapping files (`AE_mapping.pk `), and adverse event mapping (`drug_mapping.pk `). Download them from [here](https://doi.org/10.7910/DVN/G9SHDA) or [here](#downloadlinks), and move data to folder `Data/curated/`. If your data path is different, please remember to revise file path accordingly. *Note: we also provide a corresponding .csv version for all the necessary data. Find them in the same link.*
 
 5. Before running the codes, please make sure you have configured the required environment. All the necessary packages can be installed using the following command
 
@@ -110,7 +110,7 @@ The users can easily modify **3\_generate\_population\_cohort.ipynb** to generat
 ## Dataset description
 <span id="dataset"> </span>
 
-We provide [all necessary dataset](https://dataverse.harvard.edu/privateurl.xhtml?token=d796b626-23b9-4a60-86d3-5525fda3c108) for reproducing our work, or direct download files [here](#downloadlinks).
+We provide [all necessary dataset](https://doi.org/10.7910/DVN/G9SHDA) for reproducing our work, or direct download files [here](#downloadlinks).
 
 
 ### Data for running
@@ -184,7 +184,7 @@ We present intermediate results during our analysis. The top 100 results (advers
 ## Dataset download 
 <span id="downloadlinks"> </span> 
 
-All files in dataset can be downloaded [here](https://dataverse.harvard.edu/privateurl.xhtml?token=d796b626-23b9-4a60-86d3-5525fda3c108). Download portals for separate files:
+All files in dataset can be downloaded [here](https://doi.org/10.7910/DVN/G9SHDA). Download portals for separate files:
 
 ### Data in pickle format
 - [patient_safety.pk](https://dataverse.harvard.edu/api/access/datafile/4416415)
