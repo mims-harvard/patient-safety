@@ -105,7 +105,7 @@ The users can easily modify **3\_generate\_population\_cohort.ipynb** to generat
 ## Dataset description
 <span id="dataset"> </span>
 
-We provide [all necessary dataset](https://dataverse.harvard.edu/privateurl.xhtml?token=d796b626-23b9-4a60-86d3-5525fda3c108) for reproducing our work, or direct download dataset [here](#downloadlink).
+We provide [all necessary dataset](https://dataverse.harvard.edu/privateurl.xhtml?token=d796b626-23b9-4a60-86d3-5525fda3c108) for reproducing our work, or direct download files [here](#downloadlinks).
 
 
 ### Data for running
@@ -188,8 +188,6 @@ We present intermediate results during our analysis. The top 100 results (advers
 - [AE_dic.pk](https://dataverse.harvard.edu/api/access/datafile/4416416)
 
 - [drug_mapping.pk](https://dataverse.harvard.edu/api/access/datafile/4416417)
-
-- [drug_dic.pk]
 
 - [drug_ATC_mapping.csv](https://dataverse.harvard.edu/api/access/datafile/4416430)
 
