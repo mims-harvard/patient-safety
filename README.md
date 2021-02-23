@@ -127,7 +127,7 @@ In our scripts, data in pickle format are directly used to generate results. How
 
 - **drug\_mapping.pk**: Dictionary that maps drug substance from text to DrugBank identifier retrieved from [DrugBank Vocabulary](https://go.drugbank.com/releases/latest#open-data). The *key* of the dictionary is textural name of drug substance, the corresponding *value* is a list including two elements: DrugBank ID and a number representing the order in which the drug appeared in the FAERS dataset.
 
-- **drug\_dic.pk**: Extracted drug names from **drug\_mapping.pk** and form as a dictionary, which enables fast indexing the drug. 
+<!-- - **drug\_dic.pk**: Extracted drug names from **drug\_mapping.pk** and form as a dictionary, which enables fast indexing the drug. -->
 
 - **drug\_ATC\_mapping.csv**: Anatomical Therapeutic Chemical ([ATC](https://www.whocc.no/atc_ddd_index/)) ontology. The ATC categorization is an internationally accepted classification system maintained by the WHO that classifies active ingredients of drugs according to the organ or system on which they act and their therapeutic, pharmacological, and chemical properties. This file contains the broad class of ATC codes, each subclass level in a separate column, the DrugBank ID, FAERS code ID, and string name. 
 
@@ -188,6 +188,7 @@ We present intermediate results during our analysis. The top 100 results (advers
 - [AE_dic.pk](https://dataverse.harvard.edu/api/access/datafile/4416416)
 
 - [drug_mapping.pk](https://dataverse.harvard.edu/api/access/datafile/4416417)
+
 
 - [drug_ATC_mapping.csv](https://dataverse.harvard.edu/api/access/datafile/4416430)
 
