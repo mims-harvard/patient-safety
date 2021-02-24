@@ -42,15 +42,17 @@ We use the dataset to detect adverse events that are significantly associated wi
 
 ### Configuration and run scripts
 
-Our scripts are run in [O2 cluster](https://wiki.rc.hms.harvard.edu/display/O2/) which is a platform for Linux-based high-performance computing at Harvard Medical School. 
+Our scripts are run in [O2 cluster](https://wiki.rc.hms.harvard.edu/display/O2/) which is a platform for Linux-based high-performance computing at Harvard Medical School. The source codes are tested on Linux with Python 3.7, however, our scripts have **no** requirement of operating systems.
 
-1. We recommend the user run scripts in a virtual environment. Build a virtual environment named *patientsafety* and install Jupyter Notebook if you don't have it:
+1. We recommend the user run scripts in a virtual environment. Build a virtual environment named *patientsafety* and install [Jupyter Notebook](https://jupyter.org/install) if you don't have it:
 
 ```
 virtualenv patientsafety
 source patientsafety/bin/activate
 pip install jupyter
 ```
+The installation will only takes a few minutes. 
+
 
 2. Download our scripts to your local server/computer. Then creat a folder (such as `Code`) and copy all scripts in:
 ```
@@ -73,7 +75,7 @@ mkdir Data/parsed
 
 4. Next we need<span id="usepk"> </span>to prepare the curated dataset and mapping dictionary (for drugs and adverse events). The necessary dataset to reproduce our work are processed patient safety reports (`patient_safety.pk`), drug mapping files (`AE_mapping.pk `, `AE_dic.pk`), and adverse event mapping (`drug_mapping.pk `). Download them from [here](https://doi.org/10.7910/DVN/G9SHDA) or [here](#downloadlinks), and move data to folder `Data/curated/`. If your data path is different, please remember to revise file path accordingly. *Note: we also provide a corresponding .csv version for all the necessary data. Find them in the same link.*
 
-5. Before running the codes, please make sure you have configured the required environment. All the necessary packages can be installed using the following command
+5. Before running the codes, please make sure you have configured the required environment. The dependencies and versions are listed in `requirements.txt`. All the necessary packages can be installed using the following command
 
 ```
 pip install -r requirements.txt
@@ -85,6 +87,7 @@ pip install -r requirements.txt
 cd Code
 jupyter notebook
 ```
+About running time, `2_parsing_preprocessing.ipynb`, `3_generate_population_cohort.ipynb`, and `6_remove_drug_interference.ipynb` will take a rather long time (like a few hours) due to large-scale dataset and nest loops; the other scripts are much faster (such as ten minutes).
 
 
 
