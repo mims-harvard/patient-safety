@@ -1,7 +1,7 @@
 
 <!--
 # patient-safety
-Resource for *Population-scale patient safety data reveal inequalities in adverse events before and during COVID-19 pandemic* ([preprint](https://www.medrxiv.org/content/10.1101/2021.01.17.21249988v1)) by Xiang Zhang, Marissa Sumathipala, and Marinka Zitnik.
+Resource for *Population-scale patient safety data reveal inequalities in adverse events before and during a pandemic* ([preprint](https://www.medrxiv.org/content/10.1101/2021.01.17.21249988v1)) by Xiang Zhang, Marissa Sumathipala, and Marinka Zitnik.
 -->
 
 # Population-scale patient safety data reveal inequalities in adverse events before and during COVID-19 pandemic
