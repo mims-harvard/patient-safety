@@ -9,7 +9,8 @@ Resource for *Population-scale identification of differential adverse events bef
 
 #### Authors: [Xiang Zhang](http://xiangzhang.info/), [Marissa Sumathipala](https://www.linkedin.com/in/marissa-sumathipala-558bb5179/), [Marinka Zitnik](https://zitniklab.hms.harvard.edu/)
 
-#### [Project website](https://zitniklab.hms.harvard.edu/projects/patient-safety), [Nature Computational Science Publication](https://www.nature.com/articles/s43588-021-00138-4)
+#### [Paper](https://www.nature.com/articles/s43588-021-00138-4) on Nature Computational Science
+#### [Project website](https://zitniklab.hms.harvard.edu/projects/patient-safety)
 <!-- [Preprint](https://www.medrxiv.org/content/10.1101/2021.01.17.21249988v1) -->
 
 ## Approach overview
